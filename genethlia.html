@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<title>Χρόνια Πολλά ❤️</title>
+<style>
+  body {
+    background:#ffe6f0;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    padding-top:60px;
+    overflow-x:hidden;
+  }
+
+  h1 { color:#d63384; }
+
+  button {
+    font-size:20px;
+    padding:15px 30px;
+    border:none;
+    border-radius:10px;
+    background-color:#ff4d88;
+    color:white;
+    cursor:pointer;
+    margin:10px;
+  }
+
+  button:hover { background-color:#e6005c; }
+
+  #message {
+    margin-top:40px;
+    font-size:22px;
+    color:#333;
+    display:none;
+  }
+
+  .falling {
+    position:fixed;
+    top:-10px;
+    font-size:28px;
+    animation:fall linear forwards;
+    z-index:9999;
+  }
+
+  @keyframes fall { to { transform:translateY(110vh); opacity:0; } }
+  @keyframes shake { 0%,100%{transform:translateX(0);}25%{transform:translateX(-10px);}75%{transform:translateX(10px);} }
+
+  /* Scrollable gallery */
+  #gallery {
+    display:none;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 800px;
+    height: 400px; /* ύψος για scroll */
+    overflow-y: auto; /* scroll */
+    border: 2px solid #ff4d88;
+    border-radius: 10px;
+    padding: 10px;
+    background: #fff0f5;
+  }
+
+  .galleryImg {
+    width:180px;
+    height:auto;
+    margin:5px;
+    border-radius:10px;
+    transition: transform 0.3s;
+    cursor:pointer;
+    display:inline-block;
+  }
+  .galleryImg:hover { transform:scale(1.05); }
+</style>
+</head>
+<body>
+
+<h1>🎉 Χρόνια Πολλά Αγάπη μου 🎂</h1>
+
+<button onclick="startSurprise()">Πάτα με 💌</button>
+
+<div id="message">
+<p>❤️ Χρόνια πολλά μωρό μου για τα γενέθλιά σου ❤️</p>
+    <p>Σε αγαπώ πάρα πολύ!</p>
+    <p>Εύχομαι να είσαι πάντα ευτυχισμένος και να βρίσκεις τη δυναμη να καλυτερεύεις για σένα και για εμάς💕</p>
+    <p> Πάντα δίπλα σου! 💕</p>
+    <p> H Βασιλική σου που θα γίνει programmer 💕</p>
+  <!-- Κουμπί για gallery -->
+  <button id="galleryBtn" onclick="showGallery()">📸 Δες την χρονιά μας</button>
+</div>
+
+<!-- Scrollable Photo gallery -->
+<div id="gallery">
+  <img src="photo1.jpg" class="galleryImg">
+  <img src="photo2.jpg" class="galleryImg">
+  <img src="photo3.jpg" class="galleryImg">
+<img src="photo4.jpg" class="galleryImg">
+<img src="photo5.jpg" class="galleryImg">
+<img src="photo6.jpg" class="galleryImg">
+<img src="photo7.jpg" class="galleryImg">
+<img src="photo8.jpg" class="galleryImg">
+<img src="photo9.jpg" class="galleryImg">
+<img src="photo10.jpg" class="galleryImg">
+<img src="photo11.jpg" class="galleryImg">
+<img src="photo12.jpg" class="galleryImg">
+<img src="photo13.jpg" class="galleryImg">
+<img src="photo14.jpg" class="galleryImg">
+<img src="photo15.jpg" class="galleryImg">
+<img src="photo16.jpg" class="galleryImg">
+<img src="photo17.jpg" class="galleryImg">
+<img src="photo18.jpg" class="galleryImg">
+<img src="photo19.jpg" class="galleryImg">
+<img src="photo20.jpg" class="galleryImg">
+<img src="photo21.jpg" class="galleryImg">
+<img src="photo22.jpg" class="galleryImg">
+<img src="photo23.jpg" class="galleryImg">
+<img src="photo24.jpg" class="galleryImg">
+<img src="photo25.jpg" class="galleryImg">
+<img src="photo26.jpg" class="galleryImg">
+<img src="photo27.jpg" class="galleryImg">
+<img src="photo28.jpg" class="galleryImg">
+<img src="photo29.jpg" class="galleryImg">
+<img src="photo30.jpg" class="galleryImg">
+<img src="photo31.jpg" class="galleryImg">
+<img src="photo33.jpg" class="galleryImg">
+<img src="photo34.jpg" class="galleryImg">
+<img src="photo35.jpg" class="galleryImg">
+<img src="photo36.jpg" class="galleryImg">
+<img src="photo37.jpg" class="galleryImg">
+<img src="photo38.jpg" class="galleryImg">
+<img src="photo39.jpg" class="galleryImg">
+</div>
+
+<!-- Μουσική -->
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let interval;
+
+function startSurprise() {
+  document.getElementById("message").style.display="block";
+  document.getElementById("music").play();
+  if(!interval){ interval=setInterval(createItem,300); }
+}
+
+function createItem(){
+  const item=document.createElement("div");
+  item.className="falling";
+  const icons=["❤️","🎂"];
+  item.innerText=icons[Math.floor(Math.random()*icons.length)];
+  item.style.left=Math.random()*100+"vw";
+  item.style.animationDuration=(3+Math.random()*3)+"s";
+  document.body.appendChild(item);
+  setTimeout(()=>item.remove(),6000);
+}
+
+function showGallery(){
+  const gallery=document.getElementById("gallery");
+  if(gallery.style.display==="none"){ gallery.style.display="block"; }
+  else{ gallery.style.display="none"; }
+}
+
+// Fun shake effect τυχαία
+document.querySelector("button").addEventListener("click",()=>{
+  if(Math.random()<0.2){
+    document.body.style.animation="shake 0.5s";
+    setTimeout(()=>document.body.style.animation="",500);
+  }
+});
+</script>
+
+</body>
+</html>
